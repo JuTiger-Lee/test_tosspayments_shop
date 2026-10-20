@@ -1,0 +1,36 @@
+# STYLEHAUS — 검색엔진·AI 크롤러 안내
+# 상품 목록 페이지는 모두 허용하고, 주문·결제·계정 페이지와 API는 제외합니다.
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /checkout.html
+Disallow: /success.html
+Disallow: /fail.html
+Disallow: /login.html
+Disallow: /mypage.html
+Disallow: /order.html
+Disallow: /*?q=
+
+# AI 검색·답변 엔진 (GEO): 공개 페이지 수집 허용
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Yeti
+Allow: /
+Disallow: /api/
+Disallow: /checkout.html
+Disallow: /success.html
+Disallow: /fail.html
+Disallow: /login.html
+Disallow: /mypage.html
+Disallow: /order.html
+
+Sitemap: https://test-tosspayments-shop.vercel.app/sitemap.xml

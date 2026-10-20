@@ -3,14 +3,199 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>STYLEHAUS</title>
+  <title>STYLEHAUS | 상의·신발·바지 패션 쇼핑몰</title>
+  <meta name="description" content="STYLEHAUS는 상의·신발·바지를 파는 온라인 패션 쇼핑몰입니다. 카테고리별 랭킹과 할인 상품을 보고, 5만 원 이상 무료배송과 토스페이먼츠 안전결제로 구매할 수 있습니다.">
+  <meta name="google-site-verification" content="SOkS0diKqypo9gzoKTW_GajuyF6qhOL-O47xSeZrL1E">
+  <link rel="canonical" href="https://test-tosspayments-shop.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="STYLEHAUS">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="STYLEHAUS | 상의·신발·바지 패션 쇼핑몰">
+  <meta property="og:description" content="STYLEHAUS는 상의·신발·바지를 파는 온라인 패션 쇼핑몰입니다. 카테고리별 랭킹과 할인 상품을 보고, 5만 원 이상 무료배송과 토스페이먼츠 안전결제로 구매할 수 있습니다.">
+  <meta property="og:url" content="https://test-tosspayments-shop.vercel.app/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1556821840-3a63f95609a7?fit=crop&crop=entropy&auto=format&q=75&w=1200&h=630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="STYLEHAUS | 상의·신발·바지 패션 쇼핑몰">
+  <meta name="twitter:description" content="STYLEHAUS는 상의·신발·바지를 파는 온라인 패션 쇼핑몰입니다. 카테고리별 랭킹과 할인 상품을 보고, 5만 원 이상 무료배송과 토스페이먼츠 안전결제로 구매할 수 있습니다.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1556821840-3a63f95609a7?fit=crop&crop=entropy&auto=format&q=75&w=1200&h=630">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "OnlineStore",
+        "@id": "https://test-tosspayments-shop.vercel.app/#store",
+        "name": "STYLEHAUS",
+        "url": "https://test-tosspayments-shop.vercel.app/",
+        "description": "상의·신발·바지를 판매하는 온라인 패션 쇼핑몰 (토스페이먼츠 결제 연동 데모)",
+        "logo": "https://test-tosspayments-shop.vercel.app/favicon.svg",
+        "telephone": "1588-0000",
+        "areaServed": "KR",
+        "currenciesAccepted": "KRW",
+        "paymentAccepted": "신용카드, 체크카드, 간편결제, 계좌이체",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "1588-0000",
+          "contactType": "customer service",
+          "availableLanguage": "Korean",
+          "hoursAvailable": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "10:00",
+            "closes": "18:00"
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "KR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 7,
+          "refundType": "https://schema.org/FullRefund"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://test-tosspayments-shop.vercel.app/#website",
+        "name": "STYLEHAUS",
+        "url": "https://test-tosspayments-shop.vercel.app/",
+        "inLanguage": "ko-KR",
+        "publisher": {
+          "@id": "https://test-tosspayments-shop.vercel.app/#store"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://test-tosspayments-shop.vercel.app/index.html?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://test-tosspayments-shop.vercel.app/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "배송비는 얼마인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "상품 금액 합계가 50,000원 이상이면 무료배송이고, 50,000원 미만이면 배송비 3,000원이 붙습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "주문하면 언제 출고되나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "결제가 완료된 주문은 1~2일 이내에 출고됩니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "어떤 결제 수단을 쓸 수 있나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "토스페이먼츠 결제위젯으로 신용·체크카드, 간편결제, 계좌이체(퀵계좌이체)를 쓸 수 있습니다. 결제 금액은 서버에서 상품 가격으로 다시 확인합니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "회원가입 없이 구매할 수 있나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "네. 로그인하지 않아도 장바구니에 담고 결제까지 할 수 있습니다. 다만 주문 내역 조회, 주문 취소, 리뷰, 좋아요는 회원만 이용할 수 있습니다. 회원가입은 이메일 또는 카카오 계정으로 할 수 있습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "주문을 취소하고 환불받을 수 있나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "회원은 마이페이지의 주문 상세에서 결제 후 7일 이내에 주문 전체를 취소할 수 있습니다. 취소하면 결제한 금액 전액이 원래 결제 수단으로 환불됩니다. 부분 취소와 교환·반품 신청은 지원하지 않습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "품절된 사이즈는 어떻게 확인하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "상품 상세 화면에서 사이즈별 재고를 확인할 수 있고, 품절된 사이즈는 선택할 수 없습니다. 모든 사이즈가 품절된 상품은 목록에 품절 표시가 붙습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "한 번에 몇 개까지 주문할 수 있나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "같은 상품·사이즈는 한 주문에 최대 10개까지 담을 수 있습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "실제로 결제되나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "STYLEHAUS는 토스페이먼츠 테스트 결제 연동 데모 쇼핑몰입니다. 테스트 키로 동작하므로 실제 돈이 결제되지 않습니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body data-page="home">
   <div id="header"></div>
 
+  <h1 class="sr-only">STYLEHAUS 온라인 패션 쇼핑몰 — 상의·신발·바지</h1>
   <main class="container" id="home"></main>
+
+  <section class="container faq" id="faq" aria-labelledby="faqTitle">
+    <h2 id="faqTitle">자주 묻는 질문</h2>
+    <details>
+      <summary>배송비는 얼마인가요?</summary>
+      <p>상품 금액 합계가 50,000원 이상이면 무료배송이고, 50,000원 미만이면 배송비 3,000원이 붙습니다.</p>
+    </details>
+    <details>
+      <summary>주문하면 언제 출고되나요?</summary>
+      <p>결제가 완료된 주문은 1~2일 이내에 출고됩니다.</p>
+    </details>
+    <details>
+      <summary>어떤 결제 수단을 쓸 수 있나요?</summary>
+      <p>토스페이먼츠 결제위젯으로 신용·체크카드, 간편결제, 계좌이체(퀵계좌이체)를 쓸 수 있습니다. 결제 금액은 서버에서 상품 가격으로 다시 확인합니다.</p>
+    </details>
+    <details>
+      <summary>회원가입 없이 구매할 수 있나요?</summary>
+      <p>네. 로그인하지 않아도 장바구니에 담고 결제까지 할 수 있습니다. 다만 주문 내역 조회, 주문 취소, 리뷰, 좋아요는 회원만 이용할 수 있습니다. 회원가입은 이메일 또는 카카오 계정으로 할 수 있습니다.</p>
+    </details>
+    <details>
+      <summary>주문을 취소하고 환불받을 수 있나요?</summary>
+      <p>회원은 마이페이지의 주문 상세에서 결제 후 7일 이내에 주문 전체를 취소할 수 있습니다. 취소하면 결제한 금액 전액이 원래 결제 수단으로 환불됩니다. 부분 취소와 교환·반품 신청은 지원하지 않습니다.</p>
+    </details>
+    <details>
+      <summary>품절된 사이즈는 어떻게 확인하나요?</summary>
+      <p>상품 상세 화면에서 사이즈별 재고를 확인할 수 있고, 품절된 사이즈는 선택할 수 없습니다. 모든 사이즈가 품절된 상품은 목록에 품절 표시가 붙습니다.</p>
+    </details>
+    <details>
+      <summary>한 번에 몇 개까지 주문할 수 있나요?</summary>
+      <p>같은 상품·사이즈는 한 주문에 최대 10개까지 담을 수 있습니다.</p>
+    </details>
+    <details>
+      <summary>실제로 결제되나요?</summary>
+      <p>STYLEHAUS는 토스페이먼츠 테스트 결제 연동 데모 쇼핑몰입니다. 테스트 키로 동작하므로 실제 돈이 결제되지 않습니다.</p>
+    </details>
+  </section>
 
   <div id="footer"></div>
 
@@ -19,6 +204,7 @@
   <script src="js/products.js"></script>
   <script src="js/db.js"></script>
   <script src="js/common.js"></script>
+  <script src="js/seo.js"></script>
   <script src="js/home.js"></script>
 </body>
 </html>

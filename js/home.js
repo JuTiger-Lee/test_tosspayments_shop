@@ -23,6 +23,7 @@ window.UI.ready.then(function () {
   }
 
   if (q) {
+    document.getElementById('faq').hidden = true;
     var needle = q.toLowerCase();
     var results = Shop.PRODUCTS.filter(function (p) {
       return (p.brand + ' ' + p.name + ' ' + p.sub).toLowerCase().indexOf(needle) !== -1;

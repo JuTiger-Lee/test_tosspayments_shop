@@ -20,6 +20,8 @@ const { ordersHandler, confirmHandler, failHandler, cancelHandler } = require('.
 const PORT = Number(process.env.PORT) || 3000;
 const ROOT = path.join(__dirname, '..');
 const PUBLIC_DIRS = ['css', 'js'];
+// 루트에서 공개하는 검색엔진·AI 크롤러용 파일
+const PUBLIC_FILES = ['robots.txt', 'sitemap.xml', 'llms.txt', 'favicon.svg'];
 const API = {
   '/api/orders': ordersHandler,
   '/api/confirm': confirmHandler,
@@ -32,6 +34,8 @@ const MIME = {
   '.css': 'text/css; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
   '.svg': 'image/svg+xml',
+  '.txt': 'text/plain; charset=utf-8',
+  '.xml': 'application/xml; charset=utf-8',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.ico': 'image/x-icon'
@@ -47,8 +51,8 @@ function serveStatic(req, res, pathname) {
   const file = path.normalize(path.join(ROOT, pathname));
   const rel = path.relative(ROOT, file);
   const top = rel.split(path.sep)[0];
-  // 루트의 .html과 css/, js/ 폴더만 공개
-  const allowed = !rel.startsWith('..') && (PUBLIC_DIRS.includes(top) || (!rel.includes(path.sep) && rel.endsWith('.html')));
+  // 루트의 .html·PUBLIC_FILES와 css/, js/ 폴더만 공개
+  const allowed = !rel.startsWith('..') && (PUBLIC_DIRS.includes(top) || PUBLIC_FILES.includes(rel) || (!rel.includes(path.sep) && rel.endsWith('.html')));
   if (!allowed) return notFound(res);
 
   fs.readFile(file, (err, content) => {

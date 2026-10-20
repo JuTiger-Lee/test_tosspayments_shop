@@ -76,6 +76,13 @@ node --check <file>            # 문법 검사 (린터·테스트 프레임워�
 - `api/orders.js`, `api/confirm.js`, `api/fail.js`, `api/cancel.js`: `lib/payment.js`의 핸들러를 내보내기만 하는 Vercel 함수입니다.
 - `scripts/dev-server.js`: 로컬 전용. `.env`를 읽고 `/api/*`를 같은 핸들러로 연결하며, 정적 파일은 **루트의 `*.html`과 `css/`, `js/`만** 제공합니다. 공개 폴더를 새로 만들면 `PUBLIC_DIRS`에 추가해야 로컬에서 보입니다(Vercel은 `outputDirectory: "."`이라 별도 설정 없이 제공).
 
+### 검색엔진·AI 노출 (SEO·AEO·GEO)
+
+- 공개 페이지(홈·상의·신발·바지)에만 설명·canonical·OG 태그를 두고, 주문·결제·계정 페이지는 `noindex`입니다. 사이트 주소(`https://test-tosspayments-shop.vercel.app/`)가 HTML 머리말, `js/seo.js`, `robots.txt`, `sitemap.xml`, `llms.txt`에 직접 적혀 있어 도메인이 바뀌면 함께 고쳐야 합니다.
+- 구조화 데이터(JSON-LD): 홈은 쇼핑몰·사이트 검색·자주 묻는 질문(`index.html`에 정적으로), 카테고리는 이동 경로. 상품 목록(`ItemList > Product`)은 상품을 DB에서 불러온 뒤 `js/seo.js`가 넣습니다.
+- 홈의 자주 묻는 질문은 화면 문구와 JSON-LD가 같아야 합니다. 배송비·취소 기간 같은 정책을 바꾸면 `index.html`(두 곳)과 `llms.txt`를 함께 고칩니다.
+- 루트의 `robots.txt`, `sitemap.xml`, `llms.txt`, `favicon.svg`는 로컬 서버의 `PUBLIC_FILES`에 등록되어 있습니다.
+
 ### Vercel 배포 주의점
 
 - 루트에 `server.js`, `app.js`, `index.js` 같은 서버 엔트리 이름의 파일을 두지 마세요. Vercel이 이를 Node 서버로 감지해 모든 요청을 함수로 보내고, 정적 파일이 404가 되어 빈 화면이 납니다.
