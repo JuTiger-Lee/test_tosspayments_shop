@@ -1,5 +1,5 @@
 /* 카테고리(상의/신발/바지) 목록 페이지 */
-(function () {
+window.UI.ready.then(function () {
   var Shop = window.Shop;
   var UI = window.UI;
   var category = document.body.dataset.category;
@@ -51,4 +51,4 @@
 
   renderFilters();
   renderGrid();
-})();
+});

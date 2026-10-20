@@ -1,5 +1,5 @@
 /* 홈: 배너 + 카테고리별 랭킹, 검색(?q=) 결과 */
-(function () {
+window.UI.ready.then(function () {
   var Shop = window.Shop;
   var UI = window.UI;
   var root = document.getElementById('home');
@@ -44,4 +44,4 @@
         '<span class="eyebrow">' + h.eyebrow + '</span><h2>' + h.title + '</h2><p>' + h.text + '</p></a>';
     }).join('') + '</div>' +
     Object.keys(Shop.CATEGORIES).map(rankingSection).join('');
-})();
+});
