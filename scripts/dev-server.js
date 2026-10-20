@@ -6,12 +6,26 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const { ordersHandler, confirmHandler } = require('../lib/payment.js');
+
+// 루트의 .env를 환경변수로 읽기 (SUPABASE_SERVICE_ROLE_KEY 등). 이미 설정된 값은 덮어쓰지 않는다
+try {
+  fs.readFileSync(path.join(__dirname, '..', '.env'), 'utf8').split(/\r?\n/).forEach((line) => {
+    const m = /^\s*([A-Z0-9_]+)\s*=\s*(.*?)\s*$/.exec(line);
+    if (m && !(m[1] in process.env)) process.env[m[1]] = m[2].replace(/^(['"])(.*)\1$/, '$2');
+  });
+} catch (e) { /* .env가 없으면 무시 */ }
+
+const { ordersHandler, confirmHandler, failHandler, cancelHandler } = require('../lib/payment.js');
 
 const PORT = Number(process.env.PORT) || 3000;
 const ROOT = path.join(__dirname, '..');
 const PUBLIC_DIRS = ['css', 'js'];
-const API = { '/api/orders': ordersHandler, '/api/confirm': confirmHandler };
+const API = {
+  '/api/orders': ordersHandler,
+  '/api/confirm': confirmHandler,
+  '/api/fail': failHandler,
+  '/api/cancel': cancelHandler
+};
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -58,4 +72,5 @@ http.createServer((req, res) => {
   res.end();
 }).listen(PORT, () => {
   console.log('STYLEHAUS → http://localhost:' + PORT);
+  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) console.warn('⚠ SUPABASE_SERVICE_ROLE_KEY가 없어 주문·결제 API가 동작하지 않습니다. .env에 넣어 주세요.');
 });
