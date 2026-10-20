@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>주문/결제 | STYLEHAUS</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://js.tosspayments.com/v2/standard"></script>
+</head>
+<body data-page="checkout">
+  <div id="header"></div>
+
+  <main class="container">
+    <div class="page-head">
+      <nav class="breadcrumb"><a href="index.html">홈</a> &gt; 주문/결제</nav>
+      <h1 class="page-title">주문서</h1>
+    </div>
+
+    <p class="empty" id="emptyOrder" hidden>주문할 상품이 없습니다. <a href="index.html"><u>쇼핑 계속하기</u></a></p>
+
+    <div class="checkout" id="checkout" hidden>
+      <div>
+        <section class="panel">
+          <h2>배송 정보</h2>
+          <form class="form-grid" id="shippingForm" novalidate>
+            <div class="field">
+              <label for="name">받는 분 <span class="req">*</span></label>
+              <input id="name" name="name" autocomplete="name" required maxlength="20">
+            </div>
+            <div class="field">
+              <label for="phone">휴대폰 번호 <span class="req">*</span></label>
+              <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="숫자만 입력" required maxlength="11">
+            </div>
+            <div class="field full">
+              <label for="email">이메일</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="결제 내역을 받을 이메일">
+            </div>
+            <div class="field full">
+              <label for="address">주소 <span class="req">*</span></label>
+              <input id="address" name="address" autocomplete="street-address" required>
+            </div>
+            <div class="field full">
+              <label for="memo">배송 요청사항</label>
+              <select id="memo" name="memo">
+                <option>문 앞에 놓아주세요</option>
+                <option>경비실에 맡겨주세요</option>
+                <option>배송 전 연락 바랍니다</option>
+              </select>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2>주문 상품 <span id="itemCount"></span></h2>
+          <ul class="order-items" id="orderItems"></ul>
+        </section>
+
+        <section class="panel">
+          <h2>결제 수단</h2>
+          <div class="widget-box" id="payment-method"></div>
+          <div id="agreement"></div>
+        </section>
+      </div>
+
+      <aside class="summary">
+        <h2>결제 금액</h2>
+        <dl class="sum" id="summary"></dl>
+        <button type="button" class="btn btn-black btn-block" id="payButton" disabled>결제 준비 중…</button>
+        <p class="pay-error" id="payError" role="alert" hidden></p>
+        <p class="notice">토스페이먼츠 테스트 환경입니다. 실제로 돈이 빠져나가지 않습니다.</p>
+      </aside>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="js/products.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

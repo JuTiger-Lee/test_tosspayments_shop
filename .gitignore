@@ -1,0 +1,8 @@
+node_modules/
+.env
+.env.*
+.DS_Store
+
+# 로컬 도구 설정
+.claude/
+.omc/
