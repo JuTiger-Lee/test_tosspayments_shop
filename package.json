@@ -4,7 +4,7 @@
   "private": true,
   "description": "토스페이먼츠 주문서형 결제(결제위젯 v2) 연동 패션 쇼핑몰 데모",
   "scripts": {
-    "start": "node server.js"
+    "start": "node scripts/dev-server.js"
   },
   "engines": {
     "node": ">=18"

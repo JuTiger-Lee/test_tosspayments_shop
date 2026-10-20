@@ -56,7 +56,7 @@
     return key;
   }
 
-  /* 서버(server.js)가 있으면 서버에서 금액을 계산해 주문을 만듭니다.
+  /* 서버(/api/orders)가 있으면 서버에서 금액을 계산해 주문을 만듭니다.
      정적 호스팅만 할 때는 브라우저에서 주문번호를 만들고, 승인 단계는 백엔드 연결이 필요합니다. */
   function createOrder() {
     return fetch('/api/orders', {
@@ -67,7 +67,7 @@
       if (!res.ok) throw new Error('order api ' + res.status);
       return res.json();
     }).then(function (data) {
-      return { orderId: data.orderId, amount: data.amount, orderName: data.orderName, server: true };
+      return { orderId: data.orderId, amount: data.amount, orderName: data.orderName, orderToken: data.orderToken, server: true };
     }).catch(function () {
       return { orderId: randomId('ORD-').slice(0, 64), amount: order.amount, orderName: order.orderName, server: false };
     });
@@ -122,6 +122,7 @@
         amount: orderInfo.amount,
         orderName: orderInfo.orderName,
         mode: mode,
+        orderToken: orderInfo.orderToken,
         server: orderInfo.server
       });
 

@@ -4,7 +4,7 @@ HTML·CSS·JS로 만든 패션 쇼핑몰 퍼블리싱 데모입니다. 토스페
 
 ## 실행
 
-Node.js 18 이상이 필요하며, 외부 패키지는 없습니다.
+Node.js 18 이상이 필요하며, 외부 패키지는 없습니다. `npm start`는 로컬 개발 서버(`scripts/dev-server.js`)를 실행합니다.
 
 ```bash
 npm start
@@ -21,11 +21,20 @@ http://localhost:3000 으로 접속합니다.
 | `checkout.html` | 주문서: 배송 정보와 토스페이먼츠 결제위젯 |
 | `success.html` · `fail.html` | 결제 승인 결과 / 실패 안내 |
 
+## 구조
+
+| 경로 | 역할 |
+| --- | --- |
+| `*.html`, `css/`, `js/` | 정적 페이지 (Vercel이 그대로 제공) |
+| `api/orders.js`, `api/confirm.js` | Vercel 서버리스 함수 |
+| `lib/payment.js` | 주문 생성·결제 승인 로직 (API 함수와 개발 서버가 함께 사용) |
+| `scripts/dev-server.js` | 로컬 개발 서버 |
+
 ## 결제 흐름
 
-1. `checkout.html`에서 `POST /api/orders`를 호출합니다. 서버가 상품 데이터로 금액을 다시 계산해 주문번호를 발급합니다.
+1. `checkout.html`에서 `POST /api/orders`를 호출합니다. 서버가 상품 데이터로 금액을 다시 계산하고, 주문번호와 금액을 HMAC으로 서명한 `orderToken`을 함께 발급합니다.
 2. 결제위젯에서 결제를 요청하면 `success.html`로 리다이렉트됩니다.
-3. `success.html`에서 `POST /api/confirm`을 호출합니다. 서버가 금액을 검증한 뒤 시크릿 키로 토스페이먼츠 승인 API를 호출합니다.
+3. `success.html`에서 `POST /api/confirm`을 호출합니다. 서버가 `orderToken`으로 금액을 검증한 뒤 시크릿 키로 토스페이먼츠 승인 API를 호출합니다.
 
 ## 키 설정
 
@@ -38,7 +47,9 @@ http://localhost:3000 으로 접속합니다.
 TOSS_SECRET_KEY=test_sk_xxx npm start
 ```
 
-> 주문 정보는 서버 메모리에만 저장되므로, 운영 환경에서는 DB에 저장해야 합니다.
+Vercel에서는 프로젝트 Settings → Environment Variables에 `TOSS_SECRET_KEY`를 추가합니다.
+
+> 주문은 DB 없이 서명 토큰으로만 검증합니다. 운영 환경에서는 주문을 DB에 저장하고, 중복 승인과 재고를 관리하세요.
 
 ## 기타
 

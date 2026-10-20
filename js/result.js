@@ -51,13 +51,13 @@
   function finish() {
     if (pending && pending.mode === 'cart') UI.clearCart();
     if (pending && pending.mode === 'buynow') UI.setBuyNow([]);
-    try { sessionStorage.removeItem(PENDING_KEY); } catch (e) { /* 무시 */ }
+    // PENDING_KEY는 남겨 둔다: 새로고침해도 서버가 이미 승인된 결제를 조회해 같은 결과를 보여준다
   }
 
   fetch('/api/confirm', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ paymentKey: paymentKey, orderId: orderId, amount: amount })
+    body: JSON.stringify({ paymentKey: paymentKey, orderId: orderId, amount: amount, orderToken: pending && pending.orderToken })
   }).then(function (res) {
     var type = res.headers.get('content-type') || '';
     if (res.status === 404 && type.indexOf('json') === -1) throw new Error('NO_SERVER');
@@ -88,7 +88,7 @@
     root.innerHTML = '<div class="result-icon">✓</div><h1>결제 인증이 완료되었습니다</h1>' +
       '<p class="desc">아래 정보로 서버에서 결제 승인 API를 호출해야 결제가 최종 완료됩니다.</p>' +
       rows([['주문번호', orderId], ['결제 금액', UI.won(amount)], ['paymentKey', paymentKey]]) +
-      '<p class="warn">승인 서버(/api/confirm)에 연결하지 못했습니다. <b>node server.js</b>로 실행하면 승인까지 자동으로 진행됩니다.</p>' +
+      '<p class="warn">승인 서버(/api/confirm)에 연결하지 못했습니다. <b>npm start</b>로 실행하거나 Vercel에 배포하면 승인까지 자동으로 진행됩니다.</p>' +
       actions;
   });
 })();
